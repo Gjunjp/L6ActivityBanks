@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 6 Activity Banks</title>
+    <!-- 引入 Tailwind CSS (Import Tailwind CSS) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google 字體 (Import Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- 引入圖示庫 (Import Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* 彈出視窗動畫 (Modal Transitions) */
+        .modal-enter { opacity: 0; }
+        .modal-enter-active { opacity: 1; transition: opacity 0.3s ease-out; }
+        .modal-scale-enter { transform: scale(0.95); opacity: 0; }
+        .modal-scale-enter-active { transform: scale(1); opacity: 1; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- 頂部標題區塊 (Header Section) -->
+    <header class="bg-indigo-600 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight flex items-center justify-center gap-3">
+                <i class="ph-fill ph-crown text-4xl text-yellow-300"></i> Level 6 Activity Banks
+            </h1>
+            <p class="mt-2 text-indigo-200 text-sm md:text-base">For CEFR C2 Level (Mastery) | 30–45 minutes | Click a card to read</p>
+        </div>
+        
+        <!-- 導覽列 (Navigation Tabs) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex space-x-1 overflow-x-auto no-scrollbar pb-2" aria-label="Tabs" id="tabs">
+                <button onclick="switchTab('vocabulary')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg bg-white text-indigo-700 hover:bg-indigo-50 transition-colors whitespace-nowrap active-tab" data-target="vocabulary">
+                    <i class="ph ph-text-aa text-lg"></i> Vocabulary
+                </button>
+                <button onclick="switchTab('grammar')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="grammar">
+                    <i class="ph ph-brackets-curly text-lg"></i> Grammar
+                </button>
+                <button onclick="switchTab('conversation')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="conversation">
+                    <i class="ph ph-chats text-lg"></i> Conversation
+                </button>
+                <button onclick="switchTab('reading')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="reading">
+                    <i class="ph ph-book-open-text text-lg"></i> Reading
+                </button>
+                <button onclick="switchTab('comprehensive')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="comprehensive">
+                    <i class="ph ph-puzzle-piece text-lg"></i> All Skills
+                </button>
+                <button onclick="switchTab('listening')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="listening">
+                    <i class="ph ph-headphones text-lg"></i> Listening
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要內容區 (Main Content Area) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- ================= VOCABULARY ================= -->
+        <section id="vocabulary" class="tab-content active">
+            <div class="mb-6 border-l-4 border-slate-800 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Vocabulary Games</h2>
+                <p class="text-slate-500">Master etymology, archaic idioms, cultural allusions, and extreme nuance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                        <h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Semantic Hair-Splitting</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Distinguish micro-nuances.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students dissect words with virtually identical definitions but entirely different cultural or pragmatic baggage.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Sets of heavily nuanced synonyms (e.g., obstinate vs. obdurate vs. pigheaded).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a cluster of advanced synonyms to each group.</li>
+                            <li>Groups must map the words on a matrix assessing formality, positivity/negativity, and common collocations.</li>
+                            <li>They must invent highly specific, one-sentence scenarios where ONLY one of those words would be socially acceptable to use.</li>
+                            <li>The class debates their choices.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">At C2, there are no true synonyms. Emphasize that choosing "stubborn" over "obdurate" changes not the meaning, but the intellectual register of the speaker.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                        <h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Register Chameleon</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Flawless register adaptation.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams compete to instantly translate legal or medical jargon into colloquial dialect, and vice versa.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Excerpts from legal contracts, medical journals, and tabloid magazines.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Display a dense C2 text (e.g., "The plaintiff asserts that the aforementioned stipulation is null and void").</li>
+                            <li>Give teams 60 seconds to translate it into modern street slang or a casual text message.</li>
+                            <li>In round 2, reverse the process: take a piece of raw slang ("He totally ghosted me and bailed on the rent") and elevate it to a formal legal petition.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 speakers navigate all levels of society. This proves they can understand a judge as easily as they can understand a teenager.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">The Diplomat's Dilemma</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Master doublespeak and tact.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students must navigate delivering catastrophic or offensive news using extreme euphemisms and corporate jargon.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Cards detailing brutal truths (e.g., "Our product poisons rivers", "We are firing 10,000 people").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a brutal truth to a student acting as a PR Director.</li>
+                            <li>They must address the class (the press) and convey the message without ever using negative root words.</li>
+                            <li>Example: "Firing 10,000 people" becomes "Initiating a strategic workforce realignment to optimize operational synergies."</li>
+                            <li>The press must translate the doublespeak back into reality.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Discuss the ethics of language. At C2, students must understand how vocabulary is weaponized to obscure truth in politics and business.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Idiomatic Obscurity</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Retrieve rare fixed phrases.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">A high-speed drill focusing on archaic idioms, obscure binomials, and proverbs rarely found in textbooks.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Flashcards of C2 idioms (e.g., "beyond the pale", "kith and kin", "hoist by his own petard").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Read a highly specific situation (e.g., "Someone sets a trap for you, but accidentally falls into it themselves").</li>
+                            <li>Students must recall the exact idiom that describes this ("Hoist by his own petard").</li>
+                            <li>They must immediately use the phrase in a spontaneous, modern conversational sentence to prove mastery.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Explain the origins of these phrases. C2 mastery involves knowing *why* we say things (e.g., what a "petard" actually was in medieval warfare).</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">The Neologism Forge</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Morphological creativity.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students invent new English words to describe highly specific modern phenomena using correct affixation.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A list of modern, unnamed experiences (e.g., "The feeling of phantom phone vibrations").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide an oddly specific concept (e.g., "The anxiety of seeing someone typing a message for a long time, and then they stop").</li>
+                            <li>Students must use Greek/Latin roots, portmanteaus, or suffixation to invent a plausible English word for it.</li>
+                            <li>They must present the word, its part of speech, and use it in a sample dictionary sentence.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This proves ultimate command of English morphology. If they understand how words are built, they can deconstruct any unknown word they encounter.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Etymological Forensics</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Deduce meaning from roots.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students are given highly obscure academic words and must deduce their meaning by breaking down their etymology.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A list of obscure C2 words (e.g., pusillanimous, lugubrious, obfuscate).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write a word on the board that no student knows (e.g., "Somnambulist").</li>
+                            <li>Students must identify the roots (Somn = sleep, ambul = walk, ist = person).</li>
+                            <li>They declare the definition (Sleepwalker).</li>
+                            <li>Give points to the team that can correctly deduce the meaning of the most obscure words without a dictionary.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Teach common Latin and Greek prefixes/suffixes beforehand. This is the secret to passing the Reading sections of the Cambridge CPE exam.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Cultural Allusion Hunt</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand literary references.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students decipher everyday English phrases that originate from Shakespeare, the Bible, or mythology.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Phrases containing allusions (e.g., "A Trojan Horse", "Catch-22", "A Sisyphean task").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a sentence: "Fixing this code is a truly Sisyphean task."</li>
+                            <li>Students must explain who Sisyphus was, and therefore what the adjective means (endless, futile labor).</li>
+                            <li>They must then brainstorm a modern equivalent scenario where this phrase perfectly applies.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 is deeply tied to cultural literacy. Native speakers use these allusions constantly in journalism and literature without explaining them.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-slate-100 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-slate-800 transition-colors">Lexical Constellations</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Map connotative associations.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups build complex visual maps connecting words not by topic, but by their emotional and rhetorical weight.</p>
+                    <div class="mt-4 text-xs font-bold text-slate-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Large A3 paper, colored markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give groups a core concept, like "Leadership."</li>
+                            <li>They must create a web branching into Pejorative (dictatorial, authoritarian), Ameliorative (visionary, egalitarian), and Neutral (administrative, bureaucratic) terms.</li>
+                            <li>They must then draw lines connecting words that are often confused but belong in different semantic fields.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This visualizes the "flavor" of words. At C2, using a slightly pejorative word by accident can completely derail a professional negotiation.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GRAMMAR ================= -->
+        <section id="grammar" class="tab-content">
+            <div class="mb-6 border-l-4 border-rose-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Grammar Games</h2>
+                <p class="text-slate-500">Perfect extreme ellipsis, mandative subjunctives, fronting, and stylistic deviations.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">Syntactic Acrobatics</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Radical sentence restructuring.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students apply extreme fronting and inversion to completely alter the rhetorical rhythm of a text.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Worksheets with standard, bland sentences.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text: "The ancient castle stood at the top of the hill. A winding river lay below it."</li>
+                            <li>Students must completely invert the syntax for poetic effect: "At the top of the hill stood the ancient castle. Below it lay a winding river."</li>
+                            <li>They must evaluate how shifting the spatial prepositions to the front alters the reader's mental imagery.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This goes beyond grammar rules into stylistics. Teach them that fronting is used heavily in literature and journalism to establish setting instantly.</div>
+                </div>
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">The Subjunctive Mandate</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Command the English subjunctive.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams draft ultra-formal legal or corporate demands using the bare infinitive subjunctive mood.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Scenario cards requiring formal demands.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a scenario: "Your client's contract was breached. Demand immediate restitution."</li>
+                            <li>Students must write demands using mandative verbs (demand, insist, require).</li>
+                            <li>Example: "We demand that the defendant *cease* all operations immediately." (Not *ceases*).</li>
+                            <li>Award points for the correct use of the "bare infinitive" regardless of the subject or tense.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">The subjunctive is dying in colloquial English, but remains absolutely mandatory in C2-level formal correspondence, law, and diplomacy.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">Extreme Ellipsis</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Eliminate syntactic redundancy.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students surgically edit clunky texts, removing every unnecessary grammatical particle using advanced ellipsis.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Wordy, repetitive paragraphs.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text: "Some people prefer coffee, and other people prefer tea."</li>
+                            <li>Students must reduce it using ellipsis: "Some prefer coffee; others, tea."</li>
+                            <li>Push them further with complex verb ellipsis: "He said he would finish the report, but he didn't (finish the report)." -> "He said he would, but didn't."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 English is highly economical. Native speakers omit understood words constantly. This exercise bridges the gap between sounding 'correct' and sounding 'natural'.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">Alternate Histories</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Manipulate complex conditionals.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students rewrite historical events using intertwined mixed conditionals and inverted 'If' clauses.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Brief summaries of famous historical events (e.g., The Titanic, The Moon Landing).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a fact: "They didn't pack enough lifeboats, so many people died."</li>
+                            <li>Students must rewrite this using inverted 3rd conditionals: "Had they packed enough lifeboats, fewer people would have perished."</li>
+                            <li>Then, add a mixed conditional for present impact: "Were the ship to have survived, maritime laws would be vastly different today."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Dropping the 'If' and inverting the subject/auxiliary (Had I known...) instantly elevates writing from B2 to C2. Demand absolute structural perfection.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">The Epistemic Spectrum</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Express microscopic degrees of doubt.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students rank and apply highly nuanced modal adverbs and phrases to express precise levels of certainty.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A scale from 0% (Impossible) to 100% (Certain).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a statement: "The economy will recover next year."</li>
+                            <li>Call out a percentage, e.g., "75% certainty".</li>
+                            <li>Students must modify the sentence: "It is highly probable that the economy will recover," or "The economy is bound to recover."</li>
+                            <li>For 10%: "It is highly doubtful..." or "The economy is unlikely to..."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Move beyond basic modals (might, must). C2 requires lexical hedging ("There is a distinct possibility," "It's a foregone conclusion").</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">Journalistic Distancing</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Avoid libel via syntax.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students rewrite scandalous accusations into legally safe, double-passive reporting structures.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Cards with direct accusations ("The Mayor has been taking bribes for years").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give teams an accusation. They must act as cautious journalists.</li>
+                            <li>They rewrite it using complex distancing: "The Mayor is alleged to have been accepting illicit payments for several years."</li>
+                            <li>Challenge them to use dummy 'It' subjects: "It has been widely speculated that..."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This integrates vocabulary (illicit) with supreme grammatical control (perfect continuous passive infinitives).</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">Cohesion without Markers</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Master lexical referencing.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students must write a cohesive paragraph *without* using obvious transition words like 'however' or 'therefore'.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A writing prompt.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ban the use of standard discourse markers (firstly, moreover, in conclusion).</li>
+                            <li>Students must write a 4-sentence paragraph arguing a point.</li>
+                            <li>They must connect the sentences using only *lexical cohesion* (synonyms, superordinates) and *pronoun referencing* (This paradigm, Such measures).</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the secret to a Band 9 in IELTS or a Grade A in CPE. Over-relying on "Moreover" looks mechanical; lexical cohesion looks elegant and native.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-rose-700 transition-colors">The Pedantic Proofreader</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Correct stylistic infelicities.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students edit advanced texts not for grammatical errors, but for tautologies, split infinitives, and poor flow.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A text that is grammatically correct but stylistically awful.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text: "The reason why he went was because of the fact that it was absolutely essential."</li>
+                            <li>Students must identify the tautology (redundancy) and rewrite it: "He went because it was essential."</li>
+                            <li>Have them hunt for 'hanging prepositions' or clumsy split infinitives, debating whether they should be 'fixed' based on modern style guides.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 grammar is about choices, not just rules. Discuss prescriptive vs. descriptive grammar (e.g., Winston Churchill famously mocked the rule against ending sentences with prepositions).</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONVERSATION ================= -->
+        <section id="conversation" class="tab-content">
+            <div class="mb-6 border-l-4 border-amber-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Conversation Games</h2>
+                <p class="text-slate-500">Engage in Socratic dialogue, hostile cross-examination, and crisis diplomacy.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">The Socratic Seminar</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Probe abstract philosophies.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students engage in a deep, unscripted exploration of paradoxical concepts, relying on continuous questioning.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Abstract texts or quotes (e.g., excerpts from Nietzsche or modern ethics).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Arrange desks in a circle. Present a paradoxical premise (e.g., "Is absolute freedom ultimately restrictive?").</li>
+                            <li>The teacher remains entirely silent. Students must drive the conversation.</li>
+                            <li>They must respond to a peer's statement ONLY by asking a deeper, probing question to uncover underlying assumptions.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Provide linguistic frames for profound disagreement: "I respectfully challenge the premise of your argument," or "Isn't that inherently contradictory if we consider..."</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">Defending the Indefensible</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Master rhetorical manipulation.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students are challenged to argue for highly unpopular or absurd policies using flawless logic and persuasive rhetoric.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A list of absurd or highly controversial policies (e.g., "Voting should be restricted to the elderly").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Assign a student an impossible stance to defend.</li>
+                            <li>They have 2 minutes to construct a speech utilizing ethos (credibility), pathos (emotion), and logos (logic).</li>
+                            <li>The class cross-examines them. The speaker must maintain their composure and logically defend the absurd premise without breaking character.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This trains ultimate cognitive flexibility. If they can persuade the class that a terrible idea is good using English, they have mastered the language.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">Crisis Diplomacy</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: De-escalate hostile situations.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">A high-pressure roleplay where students act as international negotiators trying to avert an impending disaster.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Confidential briefs outlining a geopolitical crisis with ticking deadlines.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Divide the class into factions (e.g., Nation A, Nation B, The UN). Give them conflicting red lines.</li>
+                            <li>Set a visible 15-minute countdown timer. If no treaty is signed, a simulated 'war' breaks out.</li>
+                            <li>Students must negotiate using hyper-diplomatic language, veiled threats, and tactical concessions to reach a consensus.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Focus on the language of de-escalation and conditionality: "We view this maneuver as highly provocative," "We are prepared to stand down, contingent upon..."</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">The TED Talk Challenge</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Deliver unstructured brilliance.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students deliver a 5-minute, highly structured, persuasive monologue with absolutely zero preparation time.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A screen displaying 5 random, unrelated images (e.g., a clock, a forest, a microchip).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>A student stands up. Project a random image onto the board.</li>
+                            <li>They must instantly begin a "TED Talk" inspired by the image, adopting the persona of an industry thought-leader.</li>
+                            <li>Every 60 seconds, change the image. The speaker must seamlessly integrate the new visual into their ongoing philosophical narrative.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Assess their use of pacing, strategic pausing, and rhetorical questions. C2 fluency means never panicking when the topic shifts unexpectedly.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">The Cross-Examination</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Deflect leading questions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">A student acts as a hostile witness in a courtroom, deflecting rapid-fire questions with extreme semantic precision.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A backstory/alibi sheet for the witness.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>The 'witness' is given a brief outlining their alibi, including one fatal flaw.</li>
+                            <li>The class acts as prosecuting attorneys. They fire rapid, leading questions ("Isn't it true that you...?").</li>
+                            <li>The witness must evade, equivocate, and stall without perjuring themselves or saying "I don't know."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Teach evasive vocabulary: "To the best of my recollection...", "I can't speak to his motives, but...", "That's a gross mischaracterization of events."</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">The Think Tank</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Synthesize interdisciplinary ideas.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">A clash of experts from completely different disciplines trying to solve an unprecedented global crisis.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Role cards of wildly different professions (e.g., Quantum Physicist, Theologian, Supply Chain Manager).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Present an impossible scenario: "An alien artifact has landed. It provides infinite energy but causes memory loss."</li>
+                            <li>Experts must debate what to do. They MUST use the jargon of their assigned profession to argue their points.</li>
+                            <li>They must synthesize their conflicting worldviews into one coherent white paper recommendation.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This forces students out of generic English and into highly specialized lexicons, a hallmark of C2 mastery.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">Navigating the Taboo</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Discuss sensitive topics elegantly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students practice broaching highly sensitive cultural, political, or personal taboos without causing offense.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Prompt cards detailing sensitive situations (e.g., addressing a colleague's severe hygiene issue, questioning a cultural tradition).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Pairs receive a delicate scenario.</li>
+                            <li>They must roleplay the conversation, relying heavily on circumlocution, hedging, and extreme politeness markers.</li>
+                            <li>The class evaluates the social appropriateness of the language used—was it too blunt, or too vague to be understood?</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 isn't just knowing the words; it's knowing when *not* to say them. Teach them to use conditionals to soften blows: "I was wondering if it might be possible..."</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-slate-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-amber-700 transition-colors">The Satirical Pitch</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Employ irony and dark humor.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Pitching a completely useless or dystopian product using flawlessly persuasive, deadpan corporate jargon.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A list of terrible products (e.g., "A subscription service for air", "A transparent front door").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Assign a group a dystopian or absurd product.</li>
+                            <li>They must prepare a 3-minute pitch to venture capitalists, using slick buzzwords, buzzwords, and manufactured urgency.</li>
+                            <li>They must never break character or admit the product is bad. The humor comes from the linguistic disconnect between the high-level rhetoric and the low-level idea.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Satire requires supreme command of a language's cultural tropes. Praise the use of vacuous buzzwords ("synergistic paradigm shift").</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= READING ================= -->
+        <section id="reading" class="tab-content">
+            <div class="mb-6 border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Reading Games</h2>
+                <p class="text-slate-500">Deconstruct satire, analyze propaganda, and synthesize vast academic literature.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">Deconstructing Satire</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Identify linguistic irony.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Reading Swiftian satire or modern parody to pinpoint exactly how the irony is linguistically achieved.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Satirical articles (e.g., from The Onion or excerpts from Jonathan Swift).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text that presents an absurd premise in a highly serious, academic tone.</li>
+                            <li>Students must identify the "tell"—the exact grammatical or lexical moments where the author signals that the text is not meant to be taken literally.</li>
+                            <li>Discuss the cultural context required to 'get' the joke.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Satire relies on mimicking formal registers. Teach students to look for hyperbole masked as objective data.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">The Literature Review</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Master academic synthesis.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students synthesize five conflicting academic abstracts into a single, cohesive introductory paragraph.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">5 complex abstracts from scientific or sociological journals on the same topic.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Distribute the 5 abstracts. Students must skim them to identify the core consensus and the points of divergence.</li>
+                            <li>They must write a singular 150-word paragraph that encompasses the entire debate.</li>
+                            <li>Example structure: "While prevailing literature (Smith, 2020; Jones, 2021) suggests X, recent empirical anomalies (Chen, 2023) indicate Y..."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the exact skill required for a Master's or Ph.D. dissertation. Force them to use citation brackets and advanced reporting verbs (corroborates, refutes, postulates).</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">Reading the Unsaid</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Decode literary minimalism.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Analyzing a minimalist short story to deduce the entire plot and emotional arc from what is explicitly omitted.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A minimalist text (e.g., Hemingway's "Hills Like White Elephants").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text consisting almost entirely of vague dialogue with no descriptive tags.</li>
+                            <li>Students must act as psychological profilers. What are the characters *actually* talking about?</li>
+                            <li>They must highlight specific pronoun uses (e.g., constantly saying "it" instead of naming the problem) to prove their theories.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Introduce the "Iceberg Theory" of literature. C2 readers understand that 90% of the meaning in high-level English lies beneath the surface vocabulary.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">The Editor's Scalpel</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Reconstruct abstract philosophy.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Reordering a deeply abstract philosophical text where the only clues are subtle thematic shifts, not transition words.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A dense philosophical or critical theory essay cut into paragraphs.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Remove all obvious transition markers (Firstly, In conclusion) from the text. Scramble it.</li>
+                            <li>Students must piece it back together by tracking the evolution of a single abstract concept (e.g., from 'existence' to 'consciousness').</li>
+                            <li>They must justify their order by pointing to lexical chains (words from the same semantic field that carry the idea forward).</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the highest level of reading comprehension. It requires tracking the logical progression of an idea across paragraphs, irrespective of grammar.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">Propaganda Forensics</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Uncover linguistic manipulation.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Analyzing political speeches or PR statements to uncover loaded language, dog whistles, and logical fallacies.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Transcripts of famous political speeches or controversial press releases.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Distribute the text. Instruct students to read it from the perspective of an opposing political analyst.</li>
+                            <li>They must circle "weasel words" (words that sound meaningful but are vague, like "many say" or "freedom").</li>
+                            <li>They must identify passive structures used to evade responsibility ("mistakes were made" instead of "I made a mistake").</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Teach the concept of the "Dog Whistle"—language that sounds innocent to the general public but holds a specific, often divisive meaning for a targeted subgroup.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">The Rhetorical Autopsy</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Map Aristotelian appeals.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Breaking down a masterpiece of English rhetoric to map its structural use of ethos, pathos, and logos.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A classic piece of rhetoric (e.g., MLK's "I Have a Dream" or Churchill's "We Shall Fight on the Beaches").</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Students read the text with three different colored highlighters.</li>
+                            <li>They highlight Ethos (appeals to credibility/morality), Pathos (appeals to emotion), and Logos (appeals to logic/data).</li>
+                            <li>They analyze the rhythm: how does the author use anaphora (repetition at the start of sentences) to build momentum?</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 mastery includes appreciating the beauty of English. Discuss how the cadence of the sentences mimics the emotional state the author wants to evoke.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">Pastiche & Parody</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Replicate iconic authorial voices.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Reading a famous author and attempting to write a new paragraph perfectly mimicking their unique syntactic style.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Distinctive literary excerpts (e.g., Charles Dickens, Ernest Hemingway, Jane Austen).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide an excerpt. Students must deconstruct the "rules" of that author's universe (e.g., Hemingway = short, declarative, no adverbs; Dickens = sprawling, heavily modified, lists).</li>
+                            <li>Give them a mundane topic, like "Making a cup of coffee."</li>
+                            <li>They must write a paragraph about making coffee in the exact style of the assigned author.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This requires an incredibly deep understanding of syntax and vocabulary choice. It proves they don't just 'know' English, but can play with it musically.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-teal-700 transition-colors">The C2 Lexical Cloze</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Retrieve obscure fixed collocations.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Filling in blanks in an advanced text where the missing words are highly obscure collocations or archaic prepositions.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A CPE-level gapped text (Open Cloze style).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a text with missing words. There is no word bank.</li>
+                            <li>The gaps require highly specific, inflexible C2 knowledge (e.g., "He took exception ____ her remarks" -> "to").</li>
+                            <li>Students work individually to fill the gaps, relying purely on their internalized "feel" for what sounds right.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">At this level, they cannot rely on translation from their mother tongue. They must rely on their exposure to thousands of hours of native English input.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ALL SKILLS ================= -->
+        <section id="comprehensive" class="tab-content">
+            <div class="mb-6 border-l-4 border-fuchsia-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">All Skills Review</h2>
+                <p class="text-slate-500">Extreme integration, holistic mastery, and near-native simulations.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Polyglot's Gauntlet</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Survive ultimate trivia.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">High-speed trivia involving obscure idioms, identifying regional dialects, and correcting grammatical exceptions.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A comprehensive slide deck with audio, visual, and textual puzzles.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Create a multi-media quiz.</li>
+                            <li>Round 1: Listen to a 3-second audio clip and identify if the accent is Geordie, Cockney, or Scouse.</li>
+                            <li>Round 2: Read a C2 sentence with one missing preposition and write it on a whiteboard.</li>
+                            <li>Round 3: Rapid-fire 30-second debate on a randomly generated topic.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the 'final boss' of English learning. Make the questions brutally difficult. Celebrate the obscurity of the English language.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">CPE Simulation</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Master exam stamina.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Surviving the most brutal parts of the Cambridge C2 Proficiency exam under strict, unforgiving time limits.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Authentic CPE past papers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Administer the "Reading and Use of English" part of a CPE paper.</li>
+                            <li>Enforce absolute silence. Give them exactly the time limit allowed in the real exam.</li>
+                            <li>Following this, pair them up immediately for the collaborative speaking task, analyzing their ability to shift from silent focus to active engagement.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 exams test psychological endurance as much as language. Teach them when to guess and move on rather than obsessing over one unknown word.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Treaty Drafters</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Write legally binding language.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students not only debate an international crisis, but must collaborate to write the exact legal language of a binding treaty.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Sample UN resolutions for structural reference.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>After concluding a Model UN debate, alliances must sit down to draft a resolution.</li>
+                            <li>They must use formal legal syntax: "Recognizing that...", "Hereby mandates...", "Subject to the provisions of..."</li>
+                            <li>Opposing alliances will read the treaty looking for legal loopholes or ambiguous phrasing to exploit.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Legal English (Legalese) requires absolute precision. A misplaced comma or the use of "may" instead of "shall" can change the entire meaning of the document.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Disinformation Campaign</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Reverse-engineer fake news.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups design a highly sophisticated linguistic hoax, then swap with peers to debunk it using critical analysis.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Laptops or paper to draft the 'hoax' articles.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Groups invent a plausible but fake news story (e.g., "New study shows coffee reverses aging").</li>
+                            <li>They must write an article employing pseudo-scientific jargon, fabricated expert quotes, and emotional manipulation to make it sound real.</li>
+                            <li>Groups swap articles. They must read the opposing group's text and write a point-by-point debunking, exposing the linguistic tricks used.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the ultimate test of media literacy and linguistic manipulation. Discuss how 'truthiness' is created through specific sentence structures.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Cold Case</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Synthesize ambiguous data.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Solving a complex logic puzzle relying entirely on ambiguous witness testimonies and conflicting historical reports.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A comprehensive dossier of conflicting evidence, letters, and police reports.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a dense file containing various text types (a diary entry, a lab report, a formal police statement) relating to an unsolved mystery.</li>
+                            <li>None of the texts give the direct answer; the clues are buried in the nuances of the language (e.g., a witness using the past perfect suggests they knew something before it happened).</li>
+                            <li>Groups must synthesize the data into a final, formal indictment.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This demands exhaustive reading comprehension and the ability to track timelines through advanced verb tenses across multiple documents.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Board of Directors</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Dominate corporate discourse.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Leading a hostile corporate takeover meeting where every participant has conflicting secret agendas.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Extensive character briefs with hidden motives and financial leverage.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Set up a boardroom. Assign roles: CEO, CFO, Activist Investor, Union Rep.</li>
+                            <li>Give each a secret objective (e.g., the CFO is trying to tank the deal to save their own job).</li>
+                            <li>They must conduct the meeting using C2 business English.</li>
+                            <li>They must use interruption strategies, hedging, and subtle intimidation to steer the outcome without revealing their secret motive.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Assess their use of pragmatic turn-taking. At C2, you don't raise your hand to speak; you use language to seamlessly hijack the floor ("If I might interject for a brief moment...").</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">Academic Journal Submission</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Produce publishable writing.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Co-authoring a peer-reviewed style paper complete with citations, intense nominalization, and academic hedging.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Laptops, access to an academic database (optional).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Groups must write the abstract and introduction of a research paper on a highly complex sociological issue.</li>
+                            <li>They must rely heavily on nominalization (turning verbs into nouns: "They decided to..." becomes "The decision to...").</li>
+                            <li>They must employ academic hedging ("The data *suggests* a *potential* correlation...").</li>
+                            <li>Submit to the 'Editorial Board' (the teacher) for brutal review.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 academic writing removes the author. Teach them to eliminate "I think" and replace it with passive constructions ("It is widely posited that...").</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-fuchsia-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-700 transition-colors">The Publisher's Desk</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Elevate authorial voice.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Brutally editing peers' essays not just for grammar, but for flow, cadence, and sophisticated authorial voice.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Draft essays from the students.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Students swap advanced essays. They must act as senior editors at a publishing house.</li>
+                            <li>They do not look for basic grammar; they look for stylistic weakness (cliché phrases, repetitive sentence lengths, weak verbs).</li>
+                            <li>They must rewrite one entire paragraph of their peer's essay to "elevate" it to a publishable standard.</li>
+                            <li>They defend their edits to the original author.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This teaches them that there are many "correct" ways to write a sentence in English, but only one "best" way for a specific context.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LISTENING ================= -->
+        <section id="listening" class="tab-content">
+            <div class="mb-6 border-l-4 border-sky-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Listening Games</h2>
+                <p class="text-slate-500">Conquer thick dialects, overlapping speech, extreme speed, and deep cultural references.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">The Polymath's Lecture</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Transcribe technical jargon in dialect.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Taking notes on a highly technical subject delivered by a speaker with a strong, unfamiliar regional accent.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Audio clips of lectures in Scottish, Irish, or deep Southern US accents.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play a 3-minute academic lecture (e.g., Astrophysics) delivered by a speaker with a thick Glaswegian or Texan accent.</li>
+                            <li>Students must filter through the unfamiliar phonetics to extract the complex academic data.</li>
+                            <li>They must write a summary of the theory presented.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">C2 speakers do not just understand "BBC English." They must demonstrate the phonological flexibility to tune into regional variations rapidly.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">Micro-Expression Mastery</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Analyze overlapping subtext.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Identifying sarcasm, passive-aggression, and reluctance in overlapping, rapid-fire, multi-speaker dialogue.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Clips from dense, dialogue-heavy TV shows (e.g., Succession, The West Wing).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play a scene where 3-4 characters are arguing or talking over each other.</li>
+                            <li>Pause the clip. Ask: "Who currently holds the power in this room, and how do you know based purely on their intonation?"</li>
+                            <li>Students analyze how sighs, interruptions, and pitch changes reveal alliances and animosities.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Authentic English is rarely polite turn-taking. This trains them to isolate crucial psychological data from a wall of chaotic noise.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">The Chaotic Press Conference</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Extract facts from noise.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Extracting specific facts from an audio clip where multiple journalists are shouting over each other.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Audio of a hectic White House or Downing Street press briefing.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Provide a worksheet with highly specific questions regarding numbers, dates, or policy names.</li>
+                            <li>Play the audio of a press briefing where the audio quality is imperfect and people are shouting.</li>
+                            <li>Students must tune out the aggressive questions and isolate the specific answers provided by the spokesperson.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This replicates the cognitive load of a real-world C2 environment. Teach them to listen for the spokesperson's "anchor" words ("Let me be clear...", "The numbers are...") to find the data.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">Simultaneous Paraphrasing</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Real-time translation of ideas.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Listening to a 2-minute political rant and immediately delivering a 30-second perfectly summarized, objective brief.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">An audio clip of an impassioned, rambling speech or rant.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play a 2-minute audio of someone speaking passionately but repetitively.</li>
+                            <li>As soon as the audio stops, point to a student. They have exactly 30 seconds to strip away the emotion and deliver the core thesis in formal, objective English.</li>
+                            <li>Example: A 2-minute rant about traffic becomes "The speaker argues that municipal infrastructure is severely underfunded."</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is akin to high-level diplomatic interpreting. They must filter out the 'noise' of emotion and capture the pure semantic intent.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">Decoding Dialects</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Conquer extreme phonetic variation.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Transcribing 10-second clips of thick regional accents (e.g., Scouse, Geordie, Appalachian) word-for-word.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Short video clips of heavy regional dialects.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play a 10-second clip of a native speaker with an extreme dialect.</li>
+                            <li>Play it three times. Students must write down standard English words for the heavily accented phonemes they hear.</li>
+                            <li>Review the transcript. Discuss how vowel shifts and dropped consonants define different global Englishes.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the ultimate test of phonetic flexibility. Remind them not to focus on spelling, but on matching the sound to context to guess the word.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">The Filibuster</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Track sprawling syntax.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Tracking an argument where the speaker uses massive digressions, tangents, and complex dependent clauses.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Audio of a politician filibustering or a philosopher going on a tangent.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play an audio clip of a single sentence that lasts 45 seconds due to endless relative clauses and tangents.</li>
+                            <li>Students must identify the original subject and the final main verb of the sentence, ignoring all the 'filler' clauses in between.</li>
+                            <li>They must rewrite the 45-second sentence into one simple, 5-word sentence.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This trains working memory. C2 listeners can hold the subject of a sentence in their head for a full minute while waiting for the speaker to finally hit the verb.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">Cultural Allusion Hunt</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand unspoken references.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Identifying and explaining references to Shakespeare, historical events, or pop culture embedded in spontaneous speech.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Clips of stand-up comedy or late-night talk show interviews.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Play a clip where a speaker makes a quick cultural joke or allusion (e.g., "He's acting like a regular Benedict Arnold").</li>
+                            <li>Pause the audio. Ask: "Who is Benedict Arnold, and what does this imply about the person's character?"</li>
+                            <li>Students must explain the cultural reference and how it shapes the meaning of the conversation.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Language cannot be separated from culture at the C2 level. If they miss the reference, they miss the entire point of the interaction.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg hover:border-sky-400 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-sky-700 transition-colors">The Air Traffic Controller</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Process rapid technical data.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Following rapid, highly technical spatial and numerical instructions in a high-stress audio simulation.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Simulated ATC (Air Traffic Control) audio or emergency dispatch audio, grid paper.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give students a blank grid.</li>
+                            <li>Play a rapid-fire audio clip full of coordinates, alphanumeric codes, and vector instructions (e.g., "Flight Delta 7 niner, descend to flight level two zero, maintain heading zero four five").</li>
+                            <li>Students must rapidly map the movements or write down the exact sequence of technical data without panicking.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This is the ultimate test of numerical and spatial English under pressure. It proves they process English numbers and letters as fast as their mother tongue.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 彈出視窗 (Modal Background Overlay) -->
+    <div id="gameModal" class="fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm hidden" onclick="closeModalOnOutsideClick(event)">
+        <!-- 彈出視窗內容區 (Modal Content Container) -->
+        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col transform transition-transform duration-300 scale-95 opacity-0">
+            
+            <!-- 彈出視窗標題 (Modal Header) -->
+            <div class="bg-white px-6 py-4 border-b border-slate-100 flex justify-between items-center sticky top-0 z-10">
+                <h2 id="modalTitle" class="text-2xl font-bold text-slate-800 tracking-tight">Game Title</h2>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-rose-500 hover:bg-rose-50 p-2 rounded-full transition-colors outline-none focus:ring-2 focus:ring-rose-200">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- 彈出視窗主體 (Modal Body Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                <!-- 材料區塊 (Materials Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-indigo-600 mb-2 border-b border-indigo-100 pb-1">
+                        <i class="ph-fill ph-toolbox text-xl"></i> Materials
+                    </h4>
+                    <p id="modalMaterials" class="text-slate-700 leading-relaxed pl-1"></p>
+                </div>
+                
+                <!-- 步驟區塊 (Steps Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-emerald-600 mb-2 border-b border-emerald-100 pb-1">
+                        <i class="ph-fill ph-list-numbers text-xl"></i> Steps
+                    </h4>
+                    <div id="modalSteps" class="text-slate-700 leading-relaxed pl-1"></div>
+                </div>
+                
+                <!-- 提示區塊 (Tips Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-amber-500 mb-2 border-b border-amber-100 pb-1">
+                        <i class="ph-fill ph-lightbulb text-xl"></i> C2 Mastery Tips
+                    </h4>
+                    <div class="bg-amber-50 rounded-xl p-4 border border-amber-200 shadow-inner">
+                        <p id="modalTips" class="text-amber-900 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 彈出視窗底部 (Modal Footer) -->
+            <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 outline-none">
+                    Got it!
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript 邏輯 (JavaScript Logic) -->
+    <script>
+        // 分頁切換邏輯 (Tab switching logic)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-700', 'active-tab');
+                btn.classList.add('text-indigo-100', 'hover:bg-indigo-500', 'hover:text-white');
+            });
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
+            activeBtn.classList.remove('text-indigo-100', 'hover:bg-indigo-500', 'hover:text-white');
+            activeBtn.classList.add('bg-white', 'text-indigo-700', 'active-tab');
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // 彈出視窗邏輯 (Modal logic)
+        const modal = document.getElementById('gameModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(cardElement) {
+            // 從卡片中取得隱藏資料 (Get hidden data from the card)
+            const title = cardElement.querySelector('.game-title').innerText;
+            const materials = cardElement.querySelector('.game-materials').innerHTML;
+            const steps = cardElement.querySelector('.game-steps').innerHTML;
+            const tips = cardElement.querySelector('.game-tips').innerHTML;
+
+            // 填入視窗內容 (Populate Modal)
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMaterials').innerHTML = materials;
+            document.getElementById('modalSteps').innerHTML = steps;
+            document.getElementById('modalTips').innerHTML = tips;
+
+            // 顯示視窗並加入動畫 (Show Modal with animation)
+            modal.classList.remove('hidden');
+            // 防止背景滑動 (Prevent background scrolling)
+            document.body.style.overflow = 'hidden'; 
+            
+            // 觸發動畫 (Trigger animation)
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // 隱藏動畫 (Hide animation)
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            // 動畫結束後隱藏 DOM (Hide DOM after animation)
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // 恢復背景滑動 (Restore background scrolling)
+            }, 300);
+        }
+
+        // 點擊背景關閉視窗 (Close modal on outside click)
+        function closeModalOnOutsideClick(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
